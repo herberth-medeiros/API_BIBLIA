@@ -1,6 +1,5 @@
 import express from "express";
 import db from "./config/dbConnect.js";
-import novoTestamento from "./models/novoTestamento.js";
 import routes from "./routes/index.js";
 
 

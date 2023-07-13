@@ -24,9 +24,14 @@ class velhoController {
 
   static listaVelhoPorId = async (req, res) => {
     try{
-      const id = req.params.id;
+      const {nome, autor} = req.query;
+
+      const busca = {};
+
+      if (nome) busca.nome = {$regex: nome, $options: "i"};
+      if (autor) busca.autor = {$regex: autor, $options: "i"};
     
-      const velhoTestamentoPorId = await velhoTestamento.findById(id);
+      const velhoTestamentoPorId = await velhoTestamento.findById(busca);
   
       res.status(200).json(velhoTestamentoPorId);
     }catch{
